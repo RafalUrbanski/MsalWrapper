@@ -1,3 +1,3 @@
-# Webpack Starter
+# Msal Wrapper
 
-rafter
+Created by Rafter
