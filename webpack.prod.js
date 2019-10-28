@@ -6,7 +6,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const buildPath = path.resolve(__dirname, 'dist');
 
 module.exports = {
-    devtool: 'source-map',
+    devtool: 'inline-source-map',
     entry: {
         MsalWrapper: './src/MsalWrapper.ts'
     },
