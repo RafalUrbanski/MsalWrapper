@@ -1,6 +1,6 @@
 {
     "name": "@rafalurbanski/msalwrapper",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "description": "Wrapper for Msal.js library",
     "repository": "git://github.com/rafalurbanski/msalwrapper.git",
     "main": "./dist/MsalWrapper.js",
