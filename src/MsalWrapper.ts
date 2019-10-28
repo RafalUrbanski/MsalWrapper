@@ -25,7 +25,7 @@ class MsalWrapper {
         }
     };
     private _basicLoginRequest: Msal.AuthenticationParameters = {
-        scopes: ["openid"],
+        scopes: ["openid", "User.Read"],
         prompt: "login"
     }
 
