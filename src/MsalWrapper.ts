@@ -24,6 +24,7 @@ class MsalWrapper {
             loadFrameTimeout: 30000
         }
     };
+
     private _basicLoginRequest: Msal.AuthenticationParameters = {
         scopes: ["openid", "User.Read"],
         prompt: "login"
@@ -38,13 +39,13 @@ class MsalWrapper {
         this._userAgentApplication.handleRedirectCallback(this._authRedirectCallBack);
     };
 
-    acquireAccessToken = (request: Msal.AuthenticationParameters): Promise<Msal.AuthResponse> => {
+    acquireAccessToken = (accessTokenRequest: Msal.AuthenticationParameters, loginTokenRequest?: Msal.AuthenticationParameters): Promise<Msal.AuthResponse> => {
         return new Promise((resolve, reject) => {
             this._resolve = resolve;
             this._reject = reject;
 
             this._requestType = TokenRequestType.AccessToken;
-            this._acquireAccessTokenInternal(request);
+            this._acquireAccessTokenInternal(accessTokenRequest, loginTokenRequest);
         });
     };
 
@@ -96,19 +97,19 @@ class MsalWrapper {
         );
     };
 
-    private _acquireAccessTokenInternal = (request: Msal.AuthenticationParameters) => {
+    private _acquireAccessTokenInternal = (accessTokenRequest: Msal.AuthenticationParameters, loginTokenRequest?: Msal.AuthenticationParameters) => {
         this._userAgentApplication
-            .loginPopup(this._basicLoginRequest)
+            .loginPopup(loginTokenRequest || this._basicLoginRequest)
             .then(() => {
                 this._userAgentApplication
-                    .acquireTokenSilent(request)
+                    .acquireTokenSilent(accessTokenRequest)
                     .then((tokenResponse) => {
                         this._resolve(tokenResponse);
                     })
                     .catch((error) => {
                         if (this._requiresInteraction(error.errorCode)) {
                             this._userAgentApplication
-                                .acquireTokenPopup(request)
+                                .acquireTokenPopup(accessTokenRequest)
                                 .then((tokenResponse) => {
                                     this._resolve(tokenResponse);
                                 })

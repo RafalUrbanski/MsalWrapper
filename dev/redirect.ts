@@ -1,4 +1,4 @@
-import MsalWrapper, { Configuration, AuthenticationParameters } from "../src/MsalWrapper";
+import MsalWrapper, { Configuration } from "../src/MsalWrapper";
 
 const msalConfiguration: Configuration = {
     auth: {
@@ -6,6 +6,6 @@ const msalConfiguration: Configuration = {
     }
 };
 
-const msalWrapper = new MsalWrapper(msalConfiguration);
+new MsalWrapper(msalConfiguration);
 
 console.log("Redirect");

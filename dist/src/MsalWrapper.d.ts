@@ -7,7 +7,7 @@ declare class MsalWrapper {
     private _basicConfiguration;
     private _basicLoginRequest;
     constructor(configuration: Msal.Configuration);
-    acquireAccessToken: (request: Msal.AuthenticationParameters) => Promise<Msal.AuthResponse>;
+    acquireAccessToken: (accessTokenRequest: Msal.AuthenticationParameters, loginTokenRequest?: Msal.AuthenticationParameters) => Promise<Msal.AuthResponse>;
     acquireLoginToken: (request?: Msal.AuthenticationParameters) => Promise<Msal.AuthResponse>;
     private _authRedirectCallBack;
     private _requiresInteraction;
