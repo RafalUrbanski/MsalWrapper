@@ -1,7 +1,8 @@
 {
     "name": "msalwrapper",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Wrapper for Msal.js library",
+    "main": "./dist/MsalWrapper.js",
     "scripts": {
         "start": "node_modules/.bin/webpack-dev-server --config webpack.dev.js --mode development",
         "build": "webpack --config webpack.prod.js --mode production"
